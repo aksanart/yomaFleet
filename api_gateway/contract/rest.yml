@@ -1,0 +1,25 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: apigateway.ApiGateway.HealthCheck
+      get: /
+    - selector: apigateway.ApiGateway.ListVehicle
+      get: /vehicle
+    - selector: apigateway.ApiGateway.HistoryLocationVehicle
+      get: /vehicle/{vehicle_id}
+    - selector: apigateway.ApiGateway.Register
+      post: /register
+      body: "*"
+    - selector: apigateway.ApiGateway.Login
+      post: /login
+      body: "*"
+    - selector: apigateway.ApiGateway.CreateVehicle
+      post: /vehicle
+      body: "*"
+    - selector: apigateway.ApiGateway.UpdateVehicle
+      patch: /vehicle/{id}
+      body: "*"
+    - selector: apigateway.ApiGateway.DeleteVehicle
+      delete: /vehicle/{id}

@@ -1,0 +1,40 @@
+{{ template "header.htm" . }}
+    <div class="main">
+        <div class="table-container">
+            <h2>{{ .Title }}</h2>
+            <a href="/create-vehicle" class="create-button">Add vehicle</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Vehicle Name</th>
+                        <th>Vehicle Model</th>
+                        <th>Vehicle Status</th>
+                        <th>Mileage</th>
+                        <th>License Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{ range .Data }}
+                    <tr>
+                        <td>{{ .Id }}</td>
+                        <td>{{ .VehicleName }}</td>
+                        <td>{{ .VehicleModel }}</td>
+                        <td>{{ .VehicleStatus }}</td>
+                        <td>{{ .Mileage }}</td>
+                        <td>{{ .LicenseNumber }}</td>
+                        <td class="actions">
+                            <button class="detail-btn" onclick="window.open('/vehicle-detail?id={{ .Id }}', '_blank')">Detail</button>
+                            <button class="edit-btn" onclick="window.open('/vehicle-edit?id={{ .Id }}', '_blank')">Edit</button>
+                            <button class="delete-btn" onclick="window.open('/vehicle-delete?id={{ .Id }}', '_blank')">Delete</button>
+                            <button class="track-btn" onclick="window.open('/vehicle-track?id={{ .Id }}', '_blank')">Live Tracking</button>
+                        </td>
+                    </tr>
+                {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

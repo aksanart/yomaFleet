@@ -1,0 +1,25 @@
+{
+    "log.level": "error",
+    "@timestamp": "2024-10-09T21:57:54.939+0700",
+    "log.origin": {
+        "function": "github.com/aksanart/tracker_service/usecase.(*UseCase).UpdateTracker",
+        "file.name": "usecase/update_tracker.go",
+        "file.line": 27
+    },
+    "message": "err_FindByVehicleId",
+    "service_name": "tracker_service",
+    "method": "UpdateTracker",
+    "request": {
+        "id": "93eb037e-232a-48d1-b05d-880203eb7f5a",
+        "vehicle_id": "93eb037e-232a-48d1-b05d-880203eb7f5a",
+        "location": {
+            "latitude": 0.10587623258229928,
+            "longitude": 0.4759461503719571
+        }
+    },
+    "error": {
+        "message": "error decoding key location.1: cannot decode array into a model.Location"
+    },
+    "ecs.version": "1.6.0",
+    "log.origin.stack_trace": "github.com/aksanart/tracker_service/usecase.(*UseCase).UpdateTracker\n\tD:/project/weplus/tracker_service/usecase/update_tracker.go:27\ngithub.com/aksanart/tracker_service/transport.transport.UpdateTracker\n\tD:/project/weplus/tracker_service/transport/update_tracker.go:15\ngithub.com/aksanart/tracker_service/contract._TrackerService_UpdateTracker_Handler.func1\n\tD:/project/weplus/tracker_service/contract/grpc_grpc.pb.go:201\ngithub.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1\n\tD:/project/pkg/mod/github.com/grpc-ecosystem/go-grpc-middleware/v2@v2.1.0/interceptors/recovery/interceptors.go:34\ngithub.com/aksanart/tracker_service/contract._TrackerService_UpdateTracker_Handler\n\tD:/project/weplus/tracker_service/contract/grpc_grpc.pb.go:203\ngoogle.golang.org/grpc.(*Server).processUnaryRPC\n\tD:/project/pkg/mod/google.golang.org/grpc@v1.67.1/server.go:1394\ngoogle.golang.org/grpc.(*Server).handleStream\n\tD:/project/pkg/mod/google.golang.org/grpc@v1.67.1/server.go:1805\ngoogle.golang.org/grpc.(*Server).serveStreams.func2.1\n\tD:/project/pkg/mod/google.golang.org/grpc@v1.67.1/server.go:1029"
+}

@@ -1,0 +1,75 @@
+syntax="proto3";
+
+package trackerservice;
+option go_package = "github.com/aksanart/tracker_service/contract";
+
+service TrackerService {
+  rpc HealthCheck(EmptyRequest) returns (DefaultResponse);
+  rpc CreateTracker(CreateTrackerReq) returns (CreateTrackerResponse);
+  rpc UpdateTracker(UpdateTrackerReq) returns (DefaultResponse);
+  rpc ListTracker(EmptyRequest) returns (ListTrackerResponse);
+  rpc DetailTracker(IDTrackerReq) returns (DetailTrackerResponse);
+  rpc DeleteTracker(IDTrackerReq) returns (DefaultResponse);
+}
+
+message EmptyRequest{
+}
+
+message DefaultResponse {
+  int32 code = 1;
+  string message = 2;
+}
+
+message CreateTrackerReq {
+  string id = 1;
+  string vehicle_id = 2;
+  repeated Location location = 3;
+  int64 created_at = 4;
+  int64 updated_at = 5;
+}
+
+message Location {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+message UpdateTrackerReq{
+  string id = 1;
+  string vehicle_id = 2;
+  Location location = 3;
+
+}
+
+message ListTrackerResponse{
+  message Data{
+    string id = 1;
+    string vehicle_id = 2;
+    repeated Location location = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+  }
+  int32 code=1;
+  string message=2;
+  repeated Data data=3;
+}
+
+message DetailTrackerResponse{
+  message Data{
+    string id = 1;
+    string vehicle_id = 2;
+    repeated Location location = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+  }
+  int32 code=1;
+  string message=2;
+  Data data=3;
+}
+
+message IDTrackerReq{
+  string id=1;
+}
+
+message CreateTrackerResponse{
+  string id=1;
+}

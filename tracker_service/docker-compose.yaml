@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  tracker_service:
+    build:
+      context: .
+      dockerfile: dockerfile
+    env_file:
+      - .env_docker
+    depends_on:
+      - tracker_mongo
+      - global_redis
+    networks:
+      - private_network
+      - db_network
+      - public_network
+  # tracker_test:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile.test
+  #   command: ["go", "test", "-v", "-coverprofile=coverage.out", "./..."]
+
+  tracker_mongo:
+    image: mongo:latest
+    ports:
+      - "27021:27017"
+    networks:
+      - db_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+  global_redis:
+    image: redis:latest
+    ports:
+      - "6377:6379"
+    networks:
+      - public_network
+
+networks:
+  db_network:
+    driver: bridge
+  private_network:
+    external: true
+  public_network:
+    external: true

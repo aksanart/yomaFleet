@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "51322dd7-0272-4b82-8496-df37b088d6bb",
+		"name": "we_plus_apigw",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10914018"
+	},
+	"item": [
+		{
+			"name": "user_register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "d1f41527-4d31-4104-9147-612cedef3196",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"aksan@example.com\",\r\n    \"password\":\"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "d1f41527-4d31-4104-9147-612cedef3196",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"aksan@example.com\",\r\n    \"password\":\"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/login",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicle create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "d1f41527-4d31-4104-9147-612cedef3196",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vehicle_name\": \"GTR-4000\",\r\n    \"vehicle_model\": \"toyota\",\r\n    \"vehicle_status\": \"idle\",\r\n    \"mileage\": 2,\r\n    \"license_number\": \"54322\",\r\n    \"latitude\":1233333,\r\n    \"longitude\":33333\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/vehicle",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"vehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicle update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "d1f41527-4d31-4104-9147-612cedef3196",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"vehicle_model\": \"zuzuki\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/vehicle/93eb037e-232a-48d1-b05d-880203eb7f5a",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"vehicle",
+						"93eb037e-232a-48d1-b05d-880203eb7f5a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicle_list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "62fa42fc-fe86-4651-a2d7-39ffd949e9f2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:9001/vehicle",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"vehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicle history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "62fa42fc-fe86-4651-a2d7-39ffd949e9f2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:9001/vehicle/d72d35e1-aa75-4d93-88f1-7bb786913a54",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"vehicle",
+						"d72d35e1-aa75-4d93-88f1-7bb786913a54"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehicle delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "session-id",
+						"value": "62fa42fc-fe86-4651-a2d7-39ffd949e9f2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:9001/vehicle/59140ba2-74bc-4c45-8e8a-538fbd225296",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"vehicle",
+						"59140ba2-74bc-4c45-8e8a-538fbd225296"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

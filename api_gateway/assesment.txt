@@ -1,0 +1,23 @@
+📔 Brief
+Implementing the vehicle tracking management system using Golang with microservice architecture,
+an Admin panel to check vehicle tracking 
+data (mileage, location, status, fuel condition) at the admin portals.
+
+Vehicle Schema (ID, VehicleName, VehicleModel, VehicleStatus, Mileage, LicenseNumber)
+Tracking Schema (ID, vehicle info, tracking info)
+
+📒 Requirements Definitions
+Implement admin login functionality using the provided credentials (email, password).
+Vehicle lists implemented with data table format. (Create or Migrate vehicle data)
+Implement the tracking mechanism with an asynchronous communication style.
+With any admin UI template or theme. UI is only for data virtualization purpose, 
+we're only focus on backend service.
+Utilize each service for self-database with NoSQL.
+Vehicle service & Tracking service have to communicate with a private network (custom or open source whatever).
+
+🚚 Deliverables
+Completed vehicle data.
+Completed vehicle's tracking data.
+They are completed with unit test & integration testing.
+They are completed with best practices structure & developer-familiar comments.
+Completed with docker configuration & setup guideline with markdown or something.

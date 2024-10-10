@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  vehicle_service:
+    build:
+      context: .
+      dockerfile: dockerfile
+    env_file:
+      - .env_docker
+    depends_on:
+      - vehicle_mongo
+    networks:
+      - private_network
+      - db_network
+      - public_network
+  # vehicle_test:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile.test
+  #   command: ["go", "test", "-v", "-coverprofile=coverage.out", "./..."]
+  
+  vehicle_mongo:
+    image: mongo:latest
+    ports:
+      - "27020:27017"
+    networks:
+      - db_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+networks:
+  db_network:
+    driver: bridge
+  private_network:
+    external: true
+    driver: bridge
+  public_network:
+    external: true

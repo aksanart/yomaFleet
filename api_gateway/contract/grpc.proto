@@ -1,0 +1,120 @@
+syntax="proto3";
+
+package apigateway;
+option go_package = "github.com/aksan/weplus/apigw/contract";
+
+service ApiGateway {
+  rpc HealthCheck(EmptyRequest) returns (DefaultResponse);
+  // user
+  rpc Register(RegisterReq) returns (DefaultResponse);
+  rpc Login(RegisterReq) returns (LoginResponse);
+  // vehicle
+  rpc ListVehicle(ListVehicleReq)returns(ListVehicleResponse);
+  rpc HistoryLocationVehicle(HistoryLocationVehicleReq)returns(HistoryLocationVehicleResponse);
+  rpc CreateVehicle(CreateVehicleReq)returns(DefaultResponse);
+  rpc UpdateVehicle(UpdateVehicleReq)returns(DefaultResponse);
+  rpc DeleteVehicle(IDVehicleReq)returns(DefaultResponse);
+  rpc LiveTrackingOne(LiveTrackingOneReq) returns (stream LiveTrackingOneResp);
+}
+
+message EmptyRequest{
+}
+
+message DefaultResponse {
+  int32 code = 1;
+  string message = 2;
+}
+
+message RegisterReq {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  message Data{
+    string session_id=1;
+  }
+  int32 code = 1;
+  string message = 2;
+  Data data=3;
+}
+
+message ListVehicleResponse{
+  message Data{
+    string id=1;
+    string vehicle_name=2;
+    string vehicle_model=3;
+    string vehicle_status=4;
+    int32 mileage=5;
+    string license_number=6;
+  }
+  int32 code=1;
+  string message=2;
+  repeated Data data=3;
+}
+
+message CreateVehicleReq{
+  string vehicle_name=1;
+  string vehicle_model=2;
+  string vehicle_status=3;
+  int32 mileage=4;
+  string license_number=5;
+  double latitude=6;
+  double longitude=7;
+}
+
+message IDVehicleReq{
+  string id=1;
+}
+
+message UpdateVehicleReq{
+  string id=1;
+  string vehicle_name=2;
+  string vehicle_model=3;
+  string vehicle_status=4;
+  int32 mileage=5;
+  string license_number=6;
+}
+
+message LiveTrackingOneReq{
+  string vehicle_id=1;
+}
+
+message LiveTrackingOneResp{
+  string vehicle_id=1;
+  string vehicle_name=2;
+  string vehicle_model=3;
+  string vehicle_status=4;
+  int32 mileage=5;
+  string license_number=6;
+  double latitude=7;
+  double longitude=8;
+}
+
+message ListVehicleReq{
+  int32 offest=1;
+}
+
+message HistoryLocationVehicleReq{
+  string vehicle_id=1;
+}
+
+message HistoryLocationVehicleResponse{
+  message Data{
+    string vehicle_id=1;
+    string vehicle_name=2;
+    string vehicle_model=3;
+    string vehicle_status=4;
+    int32 mileage=5;
+    string license_number=6;
+    repeated Location location = 7;
+  }
+  int32 code=1;
+  string message=2;
+  Data data=3;
+}
+
+message Location {
+  double latitude = 1;
+  double longitude = 2;
+}
